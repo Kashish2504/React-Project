@@ -1,15 +1,17 @@
 import { useState } from "react";
 
-const Login = () => {
+const Login = ({handleLogin}) => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
   const submitHandler = (e) => {
     e.preventDefault();
-    console.log("email is",email);
-    console.log("Password is",password)
+    handleLogin(email,password)
+    // console.log("email is",email);
+    // console.log("Password is",password)
     setEmail("")
     setPassword("")
+    // console.log("object");
   };
 
   return (
@@ -32,6 +34,10 @@ const Login = () => {
             placeholder="Enter your Email"
           />
           <input
+          value={password}
+          onChange={(e) => {
+            setPassword(e.target.value);
+          }}
             required
             className="outline-none bg-transparent border-2 border-emerald-600 text-xl py-4 px-5 rounded-full mt-3 placeholder:text-gray-400"
             type="password"
